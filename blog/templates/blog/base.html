@@ -1,0 +1,68 @@
+{% load static %}
+<html>
+
+<head>
+    <title>Blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Import Google Font Lobster -->
+    <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <!-- css interno -->
+    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+</head>
+
+<body>
+    <div class="row">
+        <div class="col s12 m4 l3">
+            <ul>
+                
+            </ul>
+        </div>
+
+        <div class="col s12 m8 l9">
+            <nav>
+                <div id="navbar" class="nav-wrapper">
+                    <a href="{% url 'post_list' %}" class="brand-logo">Game Over</a>
+                    <a href="#" data-target="mobile-navbar" class="sidenav-trigger">
+                        <i class="material-icons">menu</i>
+                    </a>
+                    <ul id="nav-items" class="right hide-on-med-and-down">
+                        <li><a href="{% url 'post_list' %}" style="color: aqua;">Inicio</a></li>
+                        <li><a href="{% url 'post_list' %}" style="color: aqua;">Sobre</a></li>
+                        <li><a href="{% url 'post_list' %}" style="color: aqua;">Contato</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+            <ul class="sidenav" id="mobile-navbar">
+                <li><a href="{% url 'post_list' %}">Home</a></li>
+                <li><a href="{% url 'post_list' %}">Sobre</a></li>
+                <li><a href="{% url 'post_list' %}">Contato</a></li>
+            </ul>
+
+            <div class="col s12 m12 l12">
+                {% block content %}
+                {% endblock %}
+            </div>
+        </div>
+
+        <div class="fixed-action-btn direction-top">
+            {% if user.is_authenticated %}
+                <a id="btn-new" href="{% url 'post_new' %}" class="btn-floating btn-medium right"><i class="material-icons left">add_circle</i></a>
+            {% endif %}
+        </div>
+    </div>
+
+
+    <!--JavaScript at end of body for optimized loading-->
+    <script type="text/javascript" src="js/materialize.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script type="text/javascript" src="js/blog.js"></script>
+</body>
+
+</html>

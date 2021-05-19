@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+            <div class="col s12 m6 l6">
+                <div id="cards" class="card small teal blue-grey darken-1">
+                    <div class="card-content white-text">
+                        <span class="card-title">{{ post.titulo }}</span>
+                        <div class="date">
+                            <p>Publicado em: {{ post.data_publicacao }}</p>
+                        </div>
+                        <p>{{ post.texto|linebreaksbr | slice:"0:255" }}</p>
+                    </div>
+                    <div class="card-action center-align">
+                        <a href="{% url 'post_detail' pk=post.pk %}">Saiba Mais</a>
+                    </div>
+                </div>
+            </div>  
+    {% endfor %}
+{% endblock %}
